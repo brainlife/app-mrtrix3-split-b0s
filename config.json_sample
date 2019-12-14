@@ -1,5 +1,0 @@
-{
-	"dwi":	"testdata/dwi/dwi.nii.gz",
-	"bvals":	"testdata/dwi/dwi.bvals",
-	"bvecs":	"testdata/dwi/dwi.bvecs"
-}
