@@ -3,7 +3,7 @@
 #PBS -N app-mrtrix3-split-b0s
 #PBS -V
 
-time singularity exec -e docker://brainlife/mrtrix3:3.0_RC3 ./separate.sh
+time singularity exec -e docker://brainlife/mrtrix3:3.0.0 ./separate.sh
 
 if [ ! -f ./dwi/dwi.nii.gz ]; then
 	echo "failed"
