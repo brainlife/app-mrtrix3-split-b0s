@@ -1,0 +1,7 @@
+{
+    "shell": 2000,
+    "with_bzero": false,
+    "dwi": "/home/user/Desktop/dwi/dwi.nii.gz",
+    "bvecs": "/home/user/Desktop/dwi/dwi.bvecs",
+    "bvals": "/home/user/Desktop/dwi/dwi.bvals"
+}
