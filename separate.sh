@@ -32,5 +32,3 @@ dwiextract ${bzero_line} \
 	-export_grad_fsl ./${folders}/dwi.bvecs ./${folders}/dwi.bvals \
 	-nthreads $NCORE \
 	-force
-
-[ ! -f ./${folders}/dwi.nii.gz ] && echo "failed. check logs" && exit 1 || echo "complete" && exit 0
