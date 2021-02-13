@@ -19,11 +19,9 @@ else
 fi
 
 # extract shell with bzeros
-dwiextract ${bzero_line} \
+dwiextract  ${dwi} -fslgrad ${bvecs} ${bvals} ./${folders}/dwi.nii.gz \
 	-singleshell ${shell} \
-	${dwi} \
-	-fslgrad ${bvecs} ${bvals} \
-	./${folders}/dwi.nii.gz \
+	${bzero_line} \
 	-export_grad_fsl ./${folders}/dwi.bvecs ./${folders}/dwi.bvals \
 	-nthreads $NCORE \
 	-force
