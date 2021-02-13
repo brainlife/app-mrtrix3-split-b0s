@@ -4,16 +4,27 @@ NCORE=8
 dwi=`jq -r '.dwi' config.json`
 bvals=`jq -r '.bvals' config.json`
 bvecs=`jq -r '.bvecs' config.json`
-folders="nodif dwi"
+shell=`jq -r '.shell' config.json`
+with_bzeros=`jq -r '.with_bzeros' config.json`
+folders="dwi"
 
-for FOLDER in $folders
-do
-	mkdir -p ${FOLDER}
+# make output dir
+[ ! -d ${folders} ] && mkdir -p ${folders}
 
-	# separate b0s from sos and sense data
-	if [ ${FOLDER} == "nodif" ]; then
-		dwiextract -bzero ${dwi} -fslgrad ${bvecs} ${bvals} ./${FOLDER}/dwi.nii.gz -export_grad_fsl ./${FOLDER}/dwi.bvecs ./${FOLDER}/dwi.bvals -nthreads $NCORE -force
-	else
-		dwiextract -no_bzero ${dwi} -fslgrad ${bvecs} ${bvals} ./${FOLDER}/dwi.nii.gz -export_grad_fsl ./${FOLDER}/dwi.bvecs ./${FOLDER}/dwi.bvals -nthreads $NCORE -force
-	fi
-done
+# set bzero line. if true (default), will include bzeros. if false, will exclude
+if [[ ${with_bzeros} == 'true' ]]; then
+	bzero_line="-bzero"
+else
+	bzero_line="-no_bzero"
+fi
+
+# extract shell with bzeros
+dwiextract ${bzero_line} \
+	-singleshell ${shell} \
+	${dwi} \
+	-fslgrad ${bvecs} ${bvals} \
+	./${folders}/dwi.nii.gz \
+	-export_grad_fsl ./${folders}/dwi.bvecs ./${folders}/dwi.bvals \
+	-nthreads $NCORE \
+	-force
+
