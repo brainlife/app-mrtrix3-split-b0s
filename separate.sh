@@ -1,5 +1,8 @@
 #!/bin/bash
 
+set -x
+set -e
+
 NCORE=8
 dwi=`jq -r '.dwi' config.json`
 bvals=`jq -r '.bvals' config.json`
@@ -30,3 +33,4 @@ dwiextract ${bzero_line} \
 	-nthreads $NCORE \
 	-force
 
+[ ! -f ./${folders}/dwi.nii.gz ] && echo "failed. check logs" && exit 1 || echo "complete" && exit 0
