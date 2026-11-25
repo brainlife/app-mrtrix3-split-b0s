@@ -3,6 +3,31 @@
 
 # Extract b0 images from DWI 
 
+<!-- brainlife-app:begin (generated from the App manifest; edit the manifest, not this block) -->
+
+**Extracts the volumes of one b-value shell from a DWI with MRtrix3 dwiextract, optionally keeping the b=0 volumes, and outputs a single-shell DWI with matching bvals and bvecs.**
+
+Runs MRtrix3 dwiextract with -shell set to the requested b-value (and to 0,b-value with the b=0 volumes when with_bzero is true). Use it to reduce multi-shell data to one shell for models or Apps that require single-shell input. Needs a DWI whose bvals contain the requested shell. Utility App.
+
+Run it on brainlife.io: [https://doi.org/10.25663/brainlife.app.475](https://doi.org/10.25663/brainlife.app.475)
+
+| Input | Datatype | Required | Description |
+|---|---|---|---|
+| `dwi` | `neuro/dwi` | yes | Diffusion-weighted image with bvecs and bvals. Must contain the requested b-value shell. |
+
+| Output | Datatype | Description |
+|---|---|---|
+| `dwi` | `neuro/dwi` | Single-shell DWI (dwi.nii.gz) with exported bvals and bvecs, including the b=0 volumes when with_bzero is true. |
+
+| Parameter | Type | Default | Description |
+|---|---|---|---|
+| `shell` | number |  | b-value of the gradient shell to extract. |
+| `with_bzero` | boolean | `true` | If true (default), will include bzero volumes in extracted output. If false, will exclude. |
+
+Runtime: container `brainlife/mrtrix3:3.0.0`; 8 CPUs; 20 GB memory; 0.5 h walltime.
+
+<!-- brainlife-app:end -->
+
 This app will extract the b0 images from a DWI image using MrTrix3's dwiextract function. Will output both the b0 and the non b0 images. 
 
 ### Authors 
