@@ -10,9 +10,9 @@
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-lightgrey.svg" alt="MIT license"></a>
 </p>
 
-> 📍 **This branch, `v1.0`, is the brainlife.io App Extract b0 images from DWI** ([doi:10.25663/brainlife.app.263](https://doi.org/10.25663/brainlife.app.263)). The other Apps in this repository are listed under **Versions on brainlife.io** below.
+> **This branch, `v1.0`, is the brainlife.io App Extract b0 images from DWI** ([doi:10.25663/brainlife.app.263](https://doi.org/10.25663/brainlife.app.263)). The other Apps in this repository are listed under **Versions on brainlife.io** below.
 
-## 🧠 At a glance
+## At a glance
 
 <!-- brainlife-app:begin (generated from the App manifest; edit the manifest, not this block) -->
 
@@ -22,19 +22,19 @@ Runs MRtrix3 dwiextract with -bzero and with -no_bzero to write two DWI datasets
 
 | | |
 |---|---|
-| 📥 **Inputs** | `neuro/dwi` |
-| 📤 **Outputs** | `neuro/dwi` ×2 |
-| 🐳 **Container** | `brainlife/mrtrix3:3.0.0` |
-| ⚙️ **Resources** | 8 CPUs · 20 GB memory · 0.5 h walltime |
-| 🔗 **Run it** | [doi.org/10.25663/brainlife.app.263](https://doi.org/10.25663/brainlife.app.263) |
+| **Inputs** | `neuro/dwi` |
+| **Outputs** | `neuro/dwi` ×2 |
+| **Container** | `brainlife/mrtrix3:3.0.0` |
+| **Resources** | 8 CPUs · 20 GB memory · 0.5 h walltime |
+| **Run it** | [doi.org/10.25663/brainlife.app.263](https://doi.org/10.25663/brainlife.app.263) |
 
-#### 📥 Inputs
+#### Inputs
 
 | Input | Datatype | Required | Description |
 |---|---|---|---|
 | `dwi` | `neuro/dwi` | yes | Diffusion-weighted image with bvecs and bvals. |
 
-#### 📤 Outputs
+#### Outputs
 
 | Output | Datatype | Description |
 |---|---|---|
@@ -43,7 +43,7 @@ Runs MRtrix3 dwiextract with -bzero and with -no_bzero to write two DWI datasets
 
 <!-- brainlife-app:end -->
 
-## 🏷️ Versions on brainlife.io
+## Versions on brainlife.io
 
 Two Apps are built from this repository, each from its own branch.
 
@@ -52,9 +52,9 @@ Two Apps are built from this repository, each from its own branch.
 | Extract shell from DWI image | [`extract-shell-v1.0`](https://github.com/brainlife/app-mrtrix3-split-b0s/tree/extract-shell-v1.0) | [doi:10.25663/brainlife.app.475](https://doi.org/10.25663/brainlife.app.475) | current |
 | **Extract b0 images from DWI** (this branch) | [`v1.0`](https://github.com/brainlife/app-mrtrix3-split-b0s/tree/v1.0) | [doi:10.25663/brainlife.app.263](https://doi.org/10.25663/brainlife.app.263) | current |
 
-## 🚀 Running the App
+## Running the App
 
-### ☁️ On brainlife.io
+### On brainlife.io
 
 Choose a `neuro/dwi` dataset (with bvals and bvecs) from your project, set the options and press **Execute**.
 
@@ -63,7 +63,7 @@ Choose a `neuro/dwi` dataset (with bvals and bvecs) from your project, set the o
   - **`with_bzero`** (default `true`): also keep the b=0 volumes (`-shell 0,<shell>`). If false, they are excluded.
 - **Extract b0 images from DWI** ([doi:10.25663/brainlife.app.263](https://doi.org/10.25663/brainlife.app.263)) runs `dwiextract -bzero` and `dwiextract -no_bzero` and writes two `neuro/dwi` datasets: the b=0 volumes (tagged `b0`) and the diffusion-weighted volumes (tagged `non_b0`). Use it when a downstream App needs only the b0 volumes (for example for registration or distortion correction) or only the diffusion-weighted ones. The DWI must contain b=0 volumes.
 
-### 💻 Locally
+### Locally
 
 You need [Singularity/Apptainer](https://apptainer.org/) and [`jq`](https://jqlang.github.io/jq/). The Apps run in the `brainlife/mrtrix3:3.0.0` container.
 
@@ -88,7 +88,7 @@ You need [Singularity/Apptainer](https://apptainer.org/) and [`jq`](https://jqla
    ./main
    ```
 
-## 📦 Outputs
+## Outputs
 
 Shell extraction:
 
@@ -106,11 +106,11 @@ nodif/            b=0 volumes: dwi.nii.gz, dwi.bvecs, dwi.bvals
 dwi/              diffusion-weighted volumes: dwi.nii.gz, dwi.bvecs, dwi.bvals
 ```
 
-## 🩺 Troubleshooting
+## Troubleshooting
 
 - **`failed`**: `dwi/dwi.nii.gz` was not produced by `dwiextract`. Check that the bvals and bvecs match the DWI and, for shell extraction, that the requested shell exists in the bvals.
 
-## 📚 Citing
+## Citing
 
 > [!TIP]
 > If you use this App in your work, please cite the App, the software it builds on and brainlife.io (below). GitHub's **Cite this repository** button gives the App citation in APA and BibTeX.
@@ -122,13 +122,13 @@ dwi/              diffusion-weighted volumes: dwi.nii.gz, dwi.bvecs, dwi.bvals
 - Hayashi S, Caron BA, Heinsfeld AS, et al. brainlife.io: a decentralized and open-source cloud platform to support neuroscience research. *Nature Methods* 21:809–813 (2024). [doi:10.1038/s41592-024-02237-2](https://doi.org/10.1038/s41592-024-02237-2)
 - Avesani P, McPherson B, Hayashi S, et al. The open diffusion data derivatives, brain data upcycling via integrated publishing of derivatives and reproducible open cloud services. *Scientific Data* 6:69 (2019). [doi:10.1038/s41597-019-0073-y](https://doi.org/10.1038/s41597-019-0073-y)
 
-## 👥 Authors
+## Authors
 
 - Brad Caron
 
 **Contributors:** Soichi Hayashi
 
-## 💰 Funding
+## Funding
 
 [![Wellcome-226486/Z/22/Z](https://img.shields.io/badge/Wellcome-226486%2FZ%2F22%2FZ-purple.svg)](https://wellcome.org/)
 [![NIH-NINDS-U24NS140384](https://img.shields.io/badge/NIH_NINDS-U24NS140384-green.svg)](https://reporter.nih.gov/project-details/11261037)
@@ -147,6 +147,6 @@ dwi/              diffusion-weighted volumes: dwi.nii.gz, dwi.bvecs, dwi.bvals
 
 <sub>brainlife.io is publicly funded, and acknowledging that support helps keep it running. This App was developed with support from Wellcome, the U.S. National Institutes of Health (including the BRAIN Initiative BRAIN CONNECTS program: The Axonal Projectome EXchange, U24NS140384, and the Center for Mesoscale Connectomics, UM1NS132207) and the U.S. National Science Foundation.</sub>
 
-## ⚖️ License
+## License
 
 MIT (see the `LICENSE` file on the App branches, for example [`extract-shell-v1.0`](https://github.com/brainlife/app-mrtrix3-split-b0s/blob/extract-shell-v1.0/LICENSE)). MRtrix3 is distributed under the [Mozilla Public License 2.0](https://www.mrtrix.org/).
